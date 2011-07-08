@@ -13,8 +13,7 @@
       - if authorized? :delete, @abstract_model, @object
         = action_button rails_admin_delete_path(@abstract_model, @object), t("admin.list.delete_action"), :cross
 
-    - model_events ||= ( @abstract_model.model.respond_to?(:state_machine) &&
-                                              @abstract_model.model.state_machine.events )
+    - model_events ||= ( @abstract_model.model.respond_to?(:state_machine) && @abstract_model.model.state_machine.events )
     - if model_events.count > 0
       .control
         - model_events.collect { |a| a.name }.each do |event_name|
